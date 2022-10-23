@@ -1,0 +1,94 @@
+
+.page-wrapper{
+  background-color: #256D85;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+table{
+  width: 100%;
+}
+
+
+.title{
+  margin-top: 20px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title h2{
+  font-size: 2rem;
+  font-family: 'Mali', cursive;
+  color: #DFF6FF;
+}
+.content-wrapper{
+  display: flex;
+  
+}
+
+.noDisplay{
+  display: none;
+}
+
+.container {
+  width: 400px;
+  height: 550px;
+  margin-left: 50px;
+  margin-top: 70px;
+  background-color: transparent;
+  position:relative; 
+  border-radius: 5px;
+  overflow: hidden;
+
+}
+ 
+.sidenav {
+  padding: 20px;
+  width: 400px;
+  background-color: #113f4e;
+  scrollbar-width: 0px;
+  
+}
+.drawer-content{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+  
+}
+.sidenav-content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  
+}
+.closeButton{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.infoIcon{ 
+  transform: scale(2);
+  color:#256D85
+}
+
+.drawer-info{
+  margin-top: 40px;
+}
+
+.panel{
+  background-color: #3c7d92;
+  margin-bottom: 20px;
+  overflow: hidden;
+  
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+

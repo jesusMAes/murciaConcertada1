@@ -1,0 +1,57 @@
+<!-- 
+<ng-template [ngIf]="cargando">
+  <p *ngFor="let dato of dataFiltrado">{{dato|number }}€</p>
+</ng-template> -->
+<div class="page-wrapper">
+
+  <div class="title">
+    <h2>Evolución del total de subvenciones anuales</h2>
+    <span>Datos para el periodo 2010-2018</span>
+  </div>
+
+  <ng-template [ngIf]="cargando" >
+    <div class="chart-wrapper">
+      
+      <ngx-charts-line-chart
+      [results]="dataChart" 
+      [gradient]="gradient" 
+      [view]="view"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [yScaleMin]="180000000" 
+      style="fill: #d8d5d5"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [roundDomains]="true"
+      [yAxisTickFormatting]="xAxisFormat"
+      scheme="flame"
+      >
+
+      <ng-template #tooltipTemplate let-model="model">
+       {{ model.name}} <strong>-</strong> {{model.value|number}} €
+      </ng-template>
+      <ng-template #seriesTooltipTemplate let-model="model">
+        {{ model[0].name}} <strong>-</strong> {{model[0].value |number}} €  
+      </ng-template>
+    </ngx-charts-line-chart>
+    </div>
+ </ng-template>
+ 
+  <mat-expansion-panel class="warning-wrapper">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        WARNING 
+        <mat-icon>warning</mat-icon>
+      </mat-panel-title> 
+    </mat-expansion-panel-header>
+    <p>Estos datos son erróneos. He comprobado los resultados tanto a mano como mediante código y el cálculo es demasiado alto. Se debe a un error de los publicadores de los datos.</p>
+    <p>Podría haberlos tratado para que sean más acertados pero corría el riesgo de "falsearlos" por lo que los he introducido tal cual vienen desde el portal de datos abiertos</p>
+    <p>He escrito a la plataforma de datos abiertos pidiendo una corrección. Actualizaré los datos cuando reciba respuesta</p>
+
+  </mat-expansion-panel>
+
+
+</div>
+ 

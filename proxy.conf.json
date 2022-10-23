@@ -1,0 +1,11 @@
+
+{
+  "/api": {
+    "target": "https://datosabiertos.carm.es/odata/transparencia/ECONO_CentrosConcertados_Subvenciones_OD.json",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

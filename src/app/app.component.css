@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Mali&display=swap');
+
+.active {
+  background-color: #256D85;
+  color: #DFF6FF;
+  
+  
+}
+
+.header{
+  display: flex;
+  background-color: #06283D;
+  color: #DFF6FF;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  position: relative;
+}
+
+.header h1{
+  font-family: 'Lobster', cursive;
+  font-size: 70px;
+  padding-top:15px;
+  padding-bottom:15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.link-wrapper{
+  display: flex;
+  /* justify-content: baseline; */
+  
+}
+.link-wrapper div{
+  display: flex;
+  /* justify-content: baseline; */
+  /* background-color: #256D85; */
+  margin-right: 5px;
+  background-color: #DFF6FF;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+}
+
+ 
+a {
+  text-decoration: none;
+  font-family: 'Mali', cursive;
+  margin-top: auto;
+  font-size: 1.5rem;
+  color: #256D85;
+  padding-top: 5px;
+  height: max-content;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.normal-link{
+  height: auto;
+  font-size: 0.8rem;
+  color: black;
+  text-decoration: underline;
+  padding: 0;
+  
+}
+
+footer{
+  height:9.35vh;
+  background-color: #47B5FF;
+  color: #06283D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+footer i{
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 15px;
+}
+
+.footer-label{
+  display: flex;
+}
+

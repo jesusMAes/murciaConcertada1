@@ -1,0 +1,87 @@
+<div class="page-wrapper">
+  <div class="title">
+    <h2>Listado de Subvenciones concedidas</h2>  
+  </div>
+  <div class="content-wrapper">
+
+  <div >
+    <mat-form-field appearance="standard" style="width: 100%;">
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="filtrar($event)" placeholder="Término de búsqueda" #input>
+    </mat-form-field>
+    <table mat-table  [dataSource]="tableData" matSort (matSortChange)="sortChange($event)" >
+
+      <ng-container matColumnDef="Año" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Año</th>
+        <td mat-cell *matCellDef="let subvencion">{{subvencion[0] }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Nombre" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+        <td mat-cell *matCellDef="let subvencion">{{subvencion[2]|titlecase }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Importe" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Importe</th>
+        <td mat-cell *matCellDef="let subvencion">{{subvencion[5]|number}} €</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+      <tr mat-row *matRowDef="let row; columns:columnas"  (click)="getRecord(row)" ></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No hay ocurrencias para el término "{{input.value}}"</td>
+      </tr>
+    </table>
+    <mat-paginator
+     [pageSizeOptions]="[10]"
+     showFirstLastButtons  >
+    </mat-paginator>
+
+  </div>
+
+  <div [ngClass]="{'noDisplay' : !drawerOpened} " #drawerContainer>
+
+    <mat-drawer-container class="container"  autosize>
+      
+      <mat-drawer #drawer class="sidenav" mode="side" position="end">
+        <button mat-icon-button color="transparent" (click)="closeDrawer()" class="closeButton">
+          <mat-icon>close</mat-icon>
+        </button>
+        <div class="drawer-content">
+          <mat-icon class="infoIcon">info</mat-icon>
+        </div>
+        <div class="drawer-info" >
+          <p> Centro: {{selected[2] |titlecase}}</p>
+          <p>Año de concesión: {{selected[0]}}</p>
+          <p>Localidad: {{selected[3]|titlecase}}</p>
+        </div>
+
+        <mat-expansion-panel class="panel" >
+          <mat-expansion-panel-header class="panel-header">
+            <mat-panel-title>
+              Desglose 
+            </mat-panel-title> 
+          </mat-expansion-panel-header>
+          <p>Gastos de mantenimiento: {{selected[6]|number}}€</p>
+          <p>Gastos en profesorado: {{selected[7]|number }}€</p>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panel">
+          <mat-expansion-panel-header class="panel-header">
+            <mat-panel-title>
+              Personal 
+            </mat-panel-title> 
+          </mat-expansion-panel-header>
+          <p>Número de profesores: {{selected[8] ||'No disponible' }}</p>
+          <p>Número de alumnos: {{selected[9] ||'No disponible' }}</p>
+        </mat-expansion-panel>
+    
+      </mat-drawer>
+    
+ 
+    
+    </mat-drawer-container>
+  </div>
+  
+ </div>
+
+</div>
