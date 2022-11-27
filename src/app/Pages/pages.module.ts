@@ -8,18 +8,22 @@ import { MaterialModulesModule } from '../material-modules/material-modules.modu
 
 import { ListadoComponent } from './listado/listado.component';
 import { GraficaComponent } from './grafica/grafica.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { FormsModule } from '@angular/forms';
 
 //importa todos los componentes, solo exporta el componente de cada página
 
 @NgModule({
   declarations: [ 
-    ListadoComponent, GraficaComponent
+    ListadoComponent, GraficaComponent,
   ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
     NgxChartsModule,
-    MaterialModulesModule
+    MaterialModulesModule,
+    PipesModule,
+    FormsModule
   ],
   exports:[
   

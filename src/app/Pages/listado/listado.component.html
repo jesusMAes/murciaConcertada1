@@ -21,7 +21,7 @@
       </ng-container>
       <ng-container matColumnDef="Importe" >
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Importe</th>
-        <td mat-cell *matCellDef="let subvencion">{{subvencion[5]|number}} €</td>
+        <td mat-cell *matCellDef="let subvencion"  >{{subvencion[5]|number}} €</td> 
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="columnas"></tr>
@@ -54,24 +54,39 @@
           <p>Año de concesión: {{selected[0]}}</p>
           <p>Localidad: {{selected[3]|titlecase}}</p>
         </div>
-
-        <mat-expansion-panel class="panel" >
+        
+        <mat-expansion-panel class="panel" [expanded]="state==0" (opened)="setState(0)" >
           <mat-expansion-panel-header class="panel-header">
             <mat-panel-title>
               Desglose 
             </mat-panel-title> 
           </mat-expansion-panel-header>
-          <p>Gastos de mantenimiento: {{selected[6]|number}}€</p>
-          <p>Gastos en profesorado: {{selected[7]|number }}€</p>
+          <div class="graph-wrapper">
+            <ngx-charts-pie-chart
+            [view]="view"
+            [results]="results"
+            [scheme]="colorScheme"
+            [legend]="false"
+            [labels]="false"
+            (select)="onSelect($event)"
+            (activate)="onActivate($event)"
+            (deactivate)="onDeactivate($event)"
+            >
+            </ngx-charts-pie-chart>
+          </div>
+
+          <!-- <p>Gastos de mantenimiento: {{selected[6]|number}}€</p>
+          <p>Gastos en profesorado: {{selected[7]|number }}€</p> -->
         </mat-expansion-panel>
 
-        <mat-expansion-panel class="panel">
+        <mat-expansion-panel class="panel" [expanded]="state==1" (opened)="setState(1)" >
           <mat-expansion-panel-header class="panel-header">
             <mat-panel-title>
               Personal 
             </mat-panel-title> 
-          </mat-expansion-panel-header>
-          <p>Número de profesores: {{selected[8] ||'No disponible' }}</p>
+          </mat-expansion-panel-header> 
+          <p *ngIf="selected[0]<2019">Número de profesores: {{selected[8] ||'No disponible' }}</p>
+          <p *ngIf="selected[0]>=2019">Horas invertidas por el profesorado: {{selected[8] ||'No disponible' }}</p>
           <p>Número de alumnos: {{selected[9] ||'No disponible' }}</p>
         </mat-expansion-panel>
     

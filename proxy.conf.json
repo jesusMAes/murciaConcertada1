@@ -1,11 +1,19 @@
 
-{
-  "/api": {
+[
+   { "context":["/api"],
     "target": "https://datosabiertos.carm.es/odata/transparencia/ECONO_CentrosConcertados_Subvenciones_OD.json",
     "secure": true,
     "changeOrigin": true,
     "pathRewrite": {
       "^/api": ""
     }
+  },
+  { "context":["/2019"],
+    "target": "https://datosabiertos.carm.es/odata/transparencia/ECONO_CentrosConcertados_Subvenciones_2019+.json",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/2019": ""
+    }
   }
-}
+]

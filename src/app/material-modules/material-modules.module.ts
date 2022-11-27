@@ -11,6 +11,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 
@@ -31,6 +33,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatInputModule,
     MatSidenavModule,
     MatButtonModule,
+    MatCheckboxModule,
+    MatDividerModule,
     NgxChartsModule
   ],
   exports: [ 
@@ -44,6 +48,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatInputModule,
     MatSidenavModule,
     MatButtonModule,
+    MatCheckboxModule,
+    MatDividerModule,
     NgxChartsModule
   ]
 })

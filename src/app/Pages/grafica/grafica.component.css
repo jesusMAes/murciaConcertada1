@@ -6,6 +6,18 @@
   flex-direction: column;
   align-items: center;
 }
+.sidenav-label{
+  background-color: #256D85;
+}
+.sidenav{
+  background-color: #256D85;
+  min-width: 150px;
+  overflow-x: hidden;
+  
+}
+mat-drawer-container{
+  max-height: 80vh;
+}
 
 .chart-wrapper{
   width:50%; 
@@ -40,4 +52,51 @@ mat-panel-title mat-icon {
   color: #DFF6FF;
   fill: #DFF6FF;
   margin-left: 420px;
+}
+.text-center{ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+
+}
+
+.municipios{
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  height: 25vh;
+  margin-left: 20px;
+}
+.municipios::-webkit-scrollbar {
+  display: none;
+}
+
+.cole_check span{
+  font-size: 10px;
+}
+
+.input{
+  margin-top:-20px;
+  margin-left: 10px;
+  width:100% !important;
+}
+.colegios{
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  height: 33vh;
+  margin-left: 20px
+}
+.colegios::-webkit-scrollbar {
+  display: none;
+}
+.example-container{
+  background-color: #256D85;
+
 }

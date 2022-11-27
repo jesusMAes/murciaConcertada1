@@ -1,18 +1,59 @@
-<!-- 
-<ng-template [ngIf]="cargando">
-  <p *ngFor="let dato of dataFiltrado">{{dato|number }}€</p>
-</ng-template> -->
+<mat-drawer-container class="example-container" >
+  <mat-drawer #drawer class="sidenav " mode="side">
+    <div class="text-center">
+      <h2 >Filtros</h2>
+      <p style="margin-top: -10px;">Localidad</p>
+      <mat-form-field class="input">
+        <mat-label>Buscar municipio</mat-label>
+        <input matInput [(ngModel)]="buscarMunicipio" >
+      </mat-form-field>
+      <div class="municipios">
+        <span *ngFor="let municipio of Localidad |filter:buscarMunicipio; let i = index " >
+          <mat-checkbox  
+             [checked]="localidadSeleccionada === i" 
+             (change)="seleccionar(i,'municipio', municipio)" >{{municipio}}</mat-checkbox>
+        </span>
+      </div>
+      
+    </div>
+    <mat-divider style="width: 100%;"></mat-divider>
+    <div class="text-center" *ngIf="colegios.length !=0">
+      <p style="margin-top: 10px;">Centro</p>
+      <mat-form-field class="input">
+        <mat-label>Buscar Centro</mat-label>
+        <input matInput  [(ngModel)]="buscarCentro">
+      </mat-form-field>
+      <div class="colegios">
+        <span *ngFor="let colegio of colegios |filter:buscarCentro; let i = index" >
+          <mat-checkbox 
+             class="cole_check"
+             [checked]="colegioSeleccionado === i" 
+             (change)="seleccionar(i,'colegio', colegio)" >{{colegio[0]}} - <span>{{colegio[1]}}</span></mat-checkbox>
+        </span>
+      </div>
+    </div>
+  </mat-drawer> 
+  <div class="sidenav-label">
+    <button type="button" mat-button (click)="drawer.toggle()">
+        {{!drawer.opened ? 'Filtrar': 'Cerrar'}}
+     <mat-icon *ngIf="!drawer.opened">arrow_right</mat-icon>
+     <mat-icon *ngIf="drawer.opened">arrow_left</mat-icon>
+    </button>
+  </div>
+
 <div class="page-wrapper">
 
   <div class="title">
     <h2>Evolución del total de subvenciones anuales</h2>
-    <span>Datos para el periodo 2010-2018</span>
+    <span>Datos para el periodo 2010-2021</span>
   </div>
 
   <ng-template [ngIf]="cargando" >
-    <div class="chart-wrapper">
-      
-      <ngx-charts-line-chart
+    <div class="chart-wrapper ">
+     
+    
+      <ngx-charts-line-chart 
+      #chart
       [results]="dataChart" 
       [gradient]="gradient" 
       [view]="view"
@@ -54,4 +95,4 @@
 
 
 </div>
- 
+</mat-drawer-container>

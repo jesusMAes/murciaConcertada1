@@ -25,9 +25,13 @@ table{
 }
 .content-wrapper{
   display: flex;
-  
 }
-
+.content-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.mat-drawer-inner-container::-webkit-scrollbar{
+  display: none;
+}
 .noDisplay{
   display: none;
 }
@@ -43,13 +47,18 @@ table{
   overflow: hidden;
 
 }
+.container::-webkit-scrollbar {
+  display: none;
+}
  
 .sidenav {
   padding: 20px;
   width: 400px;
   background-color: #113f4e;
   scrollbar-width: 0px;
-  
+}
+.sidenav::-webkit-scrollbar {
+  display: none;
 }
 .drawer-content{
   margin-top: 20px;
@@ -58,7 +67,9 @@ table{
   
   -ms-overflow-style: none;  
   scrollbar-width: none;  
-  
+}
+.drawer-content::-webkit-scrollbar {
+  display: none;
 }
 .sidenav-content {
   display: flex;
@@ -67,6 +78,9 @@ table{
   align-items: center;
   justify-content: center;
   
+}
+.sidenav-content::-webkit-scrollbar {
+  display: none;
 }
 .closeButton{
   position: absolute;
@@ -91,4 +105,19 @@ table{
   -ms-overflow-style: none;  
   scrollbar-width: none;  
 }
+.panel::-webkit-scrollbar {
+  display: none;
+}
 
+.graph-wrapper{
+  height:170px;
+}
+.graph-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.graph{
+  width: 50px;
+  height:50px;
+  max-width: 50px;
+  max-height: 50px;
+}

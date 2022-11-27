@@ -9,14 +9,15 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModulesModule } from './material-modules/material-modules.module';
-import { PagesModule } from './Pages/pages.module';
+import { PagesModule } from './Pages/pages.module'; 
+import { PipesModule } from './pipes/pipes.module';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, 
   ],
   imports: [
     BrowserModule,
@@ -25,7 +26,8 @@ import { PagesModule } from './Pages/pages.module';
     HttpClientModule,
     MaterialModulesModule,
     NgxChartsModule,
-    PagesModule
+    PagesModule,
+    PipesModule
  
   ],
   providers: [MaterialModulesModule],

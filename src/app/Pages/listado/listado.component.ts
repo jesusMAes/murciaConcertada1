@@ -14,11 +14,15 @@ import { DataService } from '../../services/data.service';
 export class ListadoComponent implements OnInit, AfterViewInit {
 
   //variables
-  apiData:[]=[];
+  apiData:[][]=[];
+  apiData2019:[][]=[];
+  dataFinal:[][]=[]
   columnas:string[] =['Año', 'Nombre', 'Importe']
   dataFormateada:Object[] = [];
   tableData:any; 
 
+  //expansionPanel
+  state:number = -1;
   @ViewChild(MatPaginator) paginator!:MatPaginator;
   @ViewChild(MatSort) sort!: MatSort; 
   @ViewChild(MatDrawer) drawer!:MatDrawer
@@ -29,11 +33,21 @@ export class ListadoComponent implements OnInit, AfterViewInit {
   constructor(
     private apiService:DataService
   ) { 
-    this.apiData=apiService.apiData;
-    this.tableData = new MatTableDataSource(this.apiData)
+    this.apiData = apiService.apiData;
+    this.apiData2019 = apiService.apiData2019;
+
+
   }
   
   ngOnInit(): void {
+    this.apiData = [...this.apiData];
+    this.dataFinal = this.apiData;
+    this.apiData2019.forEach ( subvencion => {
+      let copia:[] = [...subvencion]
+      copia.splice(2,1)
+      this.dataFinal.push(copia)
+    })
+      this.tableData = new MatTableDataSource(this.dataFinal)
   }
   ngAfterViewInit(): void {
     this.tableData.paginator = this.paginator;
@@ -99,11 +113,46 @@ export class ListadoComponent implements OnInit, AfterViewInit {
     this.selected=row
     this.drawerOpened = true;
     this.drawer.open()
-    
+    this.results[0].value = parseInt(this.selected[7])
+    this.results[1].value = parseInt(this.selected[6])
+    this.results = [...this.results]
   }
 
   closeDrawer(){
     this.drawer.close()
     this.drawerOpened = false
+  }
+
+  setState(index:number){
+    this.state = index
+  }
+
+  //chart config
+  view:[number,number]=[350,150]
+  results:any[]=[
+    {
+      "name":"gastos de profesorado",
+      "value": 100
+    },
+    {
+      "name":"gastos de mantenimiento",
+      "value": 200
+    }
+  ]
+  colorScheme:any = {
+    domain: ['#A10A28', '#915AE1' ]
+  };
+
+  
+  onSelect(data:any): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  }
+
+  onActivate(data:any): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onDeactivate(data:any): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 }
